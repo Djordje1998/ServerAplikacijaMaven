@@ -87,7 +87,7 @@ public class MainServerController {
                     Kontroler.getInstance().ugasiServer();
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(frmMainServer, "Greska pri gasenju soketa", "Greska pri gasenju servera", JOptionPane.ERROR_MESSAGE);
-                } catch (SQLException ex) {
+                } catch (Exception ex) {
                     JOptionPane.showMessageDialog(frmMainServer, "Greska pri gasenju konekcije sa bazom", "Greska pri gasenju servera", JOptionPane.ERROR_MESSAGE);
                 }
 

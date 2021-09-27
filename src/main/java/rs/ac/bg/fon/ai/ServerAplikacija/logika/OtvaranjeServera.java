@@ -10,6 +10,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import rs.ac.bg.fon.ai.BibliotekaAplikacija.util.PropertyConst;
 import rs.ac.bg.fon.ai.BibliotekaAplikacija.util.PropertyRead;
+import rs.ac.bg.fon.ai.ServerAplikacija.json.JsonConfigFormat;
 
 /**
  *
@@ -22,9 +23,10 @@ public class OtvaranjeServera extends Thread{
     @Override
     public void run() {
         try {
-            PropertyRead read = new PropertyRead();
-            serverSocket = new ServerSocket(read.getInteger(PropertyConst.PORT));
-            System.out.println("Server je pokrenut");
+            JsonConfigFormat read = JsonConfigFormat.readFromFile();
+            int port = read.getPort();
+            serverSocket = new ServerSocket(port);
+            System.out.println("Server je pokrenut na portu: " + port);
             while (true) {                
                 Socket s = serverSocket.accept();
                 KomunikacijaSaKlijentom ksk = new KomunikacijaSaKlijentom(s);
@@ -33,7 +35,10 @@ public class OtvaranjeServera extends Thread{
             }
         } catch (IOException ex) {
             System.out.println("Server je ugasen");
-        }
+        } catch (Exception e) {
+        	System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
     }
 
     public ServerSocket getServerSocket() {
