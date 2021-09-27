@@ -9,11 +9,20 @@ import rs.ac.bg.fon.ai.BibliotekaAplikacija.domen.Korisnik;
 import rs.ac.bg.fon.ai.ServerAplikacija.operacije.AbstractGenericOperation;
 
 /**
+ * Klasa koja nasledjuje abstraktnu klasu AbstractGenericOperation i implementira abstratne metode.
+ * Prvo ispituje preduslove, ukoliko si ispunjeni izvrsava operaciju dodavanja objekta klase Korisnik u bazu.
+ * Na kraju provera postuslove operacije dodavanja korisnika u bazu.
  *
- * @author DarkForce
+ * @author Djordje Novakovic
+ * @version 1.0
  */
 public class KreirajKorisnika extends AbstractGenericOperation {
 
+	/**
+	 * Proverava preduslove za unos objekta klase Korisnik u bazu.
+	 * 
+	 * @throws java.lang.Exception Ako je neko polje korisnika prazno ili ako nisu jednaka polja sifra i sifraPotvrda.
+	 */
     @Override
     protected void preconditions(Object param) throws Exception {
         Korisnik korisnik = (Korisnik) param;
@@ -38,11 +47,26 @@ public class KreirajKorisnika extends AbstractGenericOperation {
         }
     }
 
+    /**
+     * Dodavanje korisnika u bazu.
+     * 
+     * @param param Korisnik koji se dodaje u bazu kao klasa Korisnik.
+     * 
+     * @throws java.lang.Exception Ako dodje do greske prilikom dodavanja korisnika u bazu.
+     */
     @Override
     protected void executeOperation(Object param) throws Exception {
         repository.add((Korisnik)param);
     }
 
+    /**
+     * Proveravanje postuslova za unos objekta klase Korisnik u bazu.
+     * Ne postoje postuslov za operaciju dodavanja korisnika.
+     * 
+     * @param param Korisnik koji se dodaje u bazu kao klasa Korisnik.
+     * 
+     * @throws java.lang.Exception Ako dodje do greske prilikom proveravanja postuslova dodatnog korisnika u bazu.
+     */
     @Override
     protected void postconditions(Object param) throws Exception {
     }
