@@ -34,11 +34,13 @@ public class KonfiguracijaServeraController {
     }
 
     private void srediFormu() {
-        PropertyRead read = new PropertyRead();
-        frmKonfiguracijaServera.getTxtUrl().setText(read.getString(PropertyConst.URL));
-        frmKonfiguracijaServera.getTxtUsername().setText(read.getString(PropertyConst.USER));
-        frmKonfiguracijaServera.getTxtPassword().setText(read.getString(PropertyConst.PASS));
-        frmKonfiguracijaServera.getTxtPort().setText(read.getString(PropertyConst.PORT));
+//    	  STARA IMPLEMENTACIJA
+//    	
+//        PropertyRead read = new PropertyRead();
+//        frmKonfiguracijaServera.getTxtUrl().setText(read.getString(PropertyConst.URL));
+//        frmKonfiguracijaServera.getTxtUsername().setText(read.getString(PropertyConst.USER));
+//        frmKonfiguracijaServera.getTxtPassword().setText(read.getString(PropertyConst.PASS));
+//        frmKonfiguracijaServera.getTxtPort().setText(read.getString(PropertyConst.PORT));
         
         frmKonfiguracijaServera.getTxtPort().grabFocus();
         frmKonfiguracijaServera.getTxtPort().setSelectionStart(0);
@@ -62,12 +64,14 @@ public class KonfiguracijaServeraController {
                     return;
                 }
                 
-                PropertyWrite write = new PropertyWrite();
-                write.setValues(PropertyConst.URL, url);
-                write.setValues(PropertyConst.PASS, pass);
-                write.setValues(PropertyConst.USER, user);
-                write.setValues(PropertyConst.PORT, port);
-                write.writeProperty();
+//                STARA IMPLEMENTACIJA
+//                
+//                PropertyWrite write = new PropertyWrite();
+//                write.setValues(PropertyConst.URL, url);
+//                write.setValues(PropertyConst.PASS, pass);
+//                write.setValues(PropertyConst.USER, user);
+//                write.setValues(PropertyConst.PORT, port);
+//                write.writeProperty();
                 
                 JOptionPane.showMessageDialog(frmKonfiguracijaServera, "Uspesno sacuvana podesavanja", "Uspesno sacuvano", JOptionPane.INFORMATION_MESSAGE);
                 frmKonfiguracijaServera.dispose();
