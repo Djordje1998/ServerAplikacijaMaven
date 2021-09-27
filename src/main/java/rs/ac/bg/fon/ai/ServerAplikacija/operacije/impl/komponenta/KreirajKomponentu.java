@@ -62,7 +62,7 @@ public class KreirajKomponentu extends AbstractGenericOperation {
      * 
      * @param param Komponenta koji se dodaje u bazu kao klasa Komponenta.
      * 
-     * @throws java.lang.Exception Ako dodje do greske prilikom proveravanja postuslova dodatne komponente u bazu.
+     * @throws java.lang.Exception Ako dodje do greske prilikom proveravanja postuslova dodate komponente u bazu.
      */
     @Override
     protected void postconditions(Object param) throws Exception {
