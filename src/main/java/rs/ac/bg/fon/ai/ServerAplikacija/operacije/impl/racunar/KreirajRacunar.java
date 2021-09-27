@@ -12,11 +12,20 @@ import java.util.Date;
 import rs.ac.bg.fon.ai.ServerAplikacija.operacije.AbstractGenericOperation;
 
 /**
+ * Klasa koja nasledjuje abstraktnu klasu AbstractGenericOperation i implementira abstratne metode.
+ * Prvo ispituje preduslove, ukoliko si ispunjeni izvrsava operaciju dodavanja objekta klase Racunar u bazu.
+ * Na kraju provera postuslove operacije dodavanja racunara u bazu.
  *
- * @author DarkForce
+ * @author Djordje Novakovic
+ * @version 1.0
  */
 public class KreirajRacunar extends AbstractGenericOperation {
 
+	/**
+	 * Proverava preduslove za unos objekta klase Racunar u bazu.
+	 * 
+	 * @throws java.lang.Exception Ako je neko polje klase Racunar prazno (null), cena nula ili garancija datum u proslosti.
+	 */
     @Override
     protected void preconditions(Object param) throws Exception {
         SimpleDateFormat sdf = new SimpleDateFormat("dd.mm.yyyy");
@@ -38,6 +47,13 @@ public class KreirajRacunar extends AbstractGenericOperation {
         }
     }
 
+    /**
+     * Dodavanje racunara u bazu.
+     * 
+     * @param param Racunar koji se dodaje u bazu kao klasa Racunar.
+     * 
+     * @throws java.lang.Exception Ako dodje do greske prilikom dodavanja racunara u bazu.
+     */
     @Override
     protected void executeOperation(Object param) throws Exception {
         Racunar racunar = (Racunar) param;
@@ -47,6 +63,14 @@ public class KreirajRacunar extends AbstractGenericOperation {
         }
     }
 
+    /**
+     * Proveravanje postuslova za unos objekta klase Racunar u bazu.
+     * Ne postoje postuslov za operaciju dodavanja racunara.
+     * 
+     * @param param Komponenta koji se dodaje u bazu kao klasa Racunar.
+     * 
+     * @throws java.lang.Exception Ako dodje do greske prilikom proveravanja postuslova dodatne racunara u bazu.
+     */
     @Override
     protected void postconditions(Object param) throws Exception {
     }

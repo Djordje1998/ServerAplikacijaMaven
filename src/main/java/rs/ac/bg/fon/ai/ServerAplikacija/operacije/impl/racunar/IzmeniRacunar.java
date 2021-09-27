@@ -12,11 +12,20 @@ import java.util.Date;
 import rs.ac.bg.fon.ai.ServerAplikacija.operacije.AbstractGenericOperation;
 
 /**
+ * Klasa koja nasledjuje abstraktnu klasu AbstractGenericOperation i implementira abstratne metode.
+ * Prvo ispituje preduslove, ukoliko si ispunjeni izvrsava operaciju izmene objekta klase Racunar u bazu.
+ * Na kraju provera postuslove operacije izmene racunara u bazi.
  *
- * @author DarkForce
+ * @author Djordje Novakovic
+ * @version 1.0
  */
 public class IzmeniRacunar extends AbstractGenericOperation {
 
+	/**
+	 * Proverava preduslove za izmenu objekta klase Racunar u bazu.
+	 * 
+	 * @throws java.lang.Exception Ako je neko polje klase Racunar prazno (null), cena nula ili garancija datum u proslosti.
+	 */
     @Override
     protected void preconditions(Object param) throws Exception {
         SimpleDateFormat sdf = new SimpleDateFormat("dd.mm.yyyy");
@@ -38,6 +47,13 @@ public class IzmeniRacunar extends AbstractGenericOperation {
         }
     }
 
+    /**
+     * Izmena racunara u bazi.
+     * 
+     * @param param Racunar koji se menja u bazu kao klasa Racunar.
+     * 
+     * @throws java.lang.Exception Ako dodje do greske prilikom izmene racunara u bazi.
+     */
     @Override
     protected void executeOperation(Object param) throws Exception {
         Racunar racunar = (Racunar) param;
@@ -47,6 +63,14 @@ public class IzmeniRacunar extends AbstractGenericOperation {
         }
     }
 
+    /**
+     * Proveravanje postuslova za izmenu objekta klase Racunar u bazu.
+     * Ne postoje postuslov za operaciju izmenu racunara.
+     * 
+     * @param param Racunar koja se menja u bazu kao klasa Racunar.
+     * 
+     * @throws java.lang.Exception Ako dodje do greske prilikom proveravanja postuslova ismene racunara u bazi.
+     */
     @Override
     protected void postconditions(Object param) throws Exception {
     }
