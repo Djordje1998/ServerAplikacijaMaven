@@ -14,8 +14,6 @@ import java.text.ParseException;
 
 import javax.swing.JOptionPane;
 import rs.ac.bg.fon.ai.ServerAplikacija.kordinator.MainCordinator;
-import rs.ac.bg.fon.ai.BibliotekaAplikacija.util.PropertyConst;
-import rs.ac.bg.fon.ai.BibliotekaAplikacija.util.PropertyWrite;
 
 /**
  *
@@ -37,7 +35,6 @@ public class KonfiguracijaServeraController {
     }
 
     private void srediFormu() {
-    	//JSON
     	try {
     		JsonConfigFormat read = JsonConfigFormat.readFromFile();
 	        frmKonfiguracijaServera.getTxtUrl().setText(read.getUrl());
@@ -49,14 +46,6 @@ public class KonfiguracijaServeraController {
 			JOptionPane.showMessageDialog(frmKonfiguracijaServera, e.getMessage(), "Greska citanju konfiguracionog fajla", JOptionPane.ERROR_MESSAGE);
             return;
 		}
-    		
-//    	STARA IMPLEMENTADCIJA
-//    	
-//        PropertyRead read = new PropertyRead();
-//        frmKonfiguracijaServera.getTxtUrl().setText(read.getString(PropertyConst.URL));
-//        frmKonfiguracijaServera.getTxtUsername().setText(read.getString(PropertyConst.USER));
-//        frmKonfiguracijaServera.getTxtPassword().setText(read.getString(PropertyConst.PASS));
-//        frmKonfiguracijaServera.getTxtPort().setText(read.getString(PropertyConst.PORT));
         
         frmKonfiguracijaServera.getTxtPort().grabFocus();
         frmKonfiguracijaServera.getTxtPort().setSelectionStart(0);

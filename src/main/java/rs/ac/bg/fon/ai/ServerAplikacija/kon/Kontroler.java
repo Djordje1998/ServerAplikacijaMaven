@@ -60,7 +60,7 @@ public class Kontroler {
         os.start();
     }
 
-    public void ugasiServer() throws IOException, SQLException {
+    public void ugasiServer() throws IOException, Exception {
         ServerSocket serverSocket = os.getServerSocket();
         serverSocket.close();
         DbConnectionFactory.getInstance().getConnection().close();

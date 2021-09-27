@@ -10,6 +10,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import rs.ac.bg.fon.ai.BibliotekaAplikacija.util.PropertyConst;
 import rs.ac.bg.fon.ai.BibliotekaAplikacija.util.PropertyRead;
+import rs.ac.bg.fon.ai.ServerAplikacija.json.JsonConfigFormat;
 
 /**
  *
@@ -30,12 +31,12 @@ public class DbConnectionFactory {
         return instance;
     }
 
-    public Connection getConnection() throws SQLException {
+    public Connection getConnection() throws Exception {
         if (connection == null || connection.isClosed()) {
-            PropertyRead read = new PropertyRead();
-            String url = read.getString(PropertyConst.URL);
-            String username = read.getString(PropertyConst.USER);
-            String password = read.getString(PropertyConst.PASS);
+            JsonConfigFormat read = JsonConfigFormat.readFromFile();
+            String url = read.getUrl();
+            String username = read.getUsername();
+            String password = read.getPassword();
             connection = DriverManager.getConnection(url, username, password);
             connection.setAutoCommit(false);
         }
