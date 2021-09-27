@@ -9,11 +9,20 @@ import rs.ac.bg.fon.ai.BibliotekaAplikacija.domen.Komponenta;
 import rs.ac.bg.fon.ai.ServerAplikacija.operacije.AbstractGenericOperation;
 
 /**
+ * Klasa koja nasledjuje abstraktnu klasu AbstractGenericOperation i implementira abstratne metode.
+ * Prvo ispituje preduslove, ukoliko si ispunjeni izvrsava operaciju dodavanja objekta klase Komponenta u bazu.
+ * Na kraju provera postuslove operacije dodavanja komponente u bazu.
  *
- * @author DarkForce
+ * @author Djordje Novakovic
+ * @version 1.0
  */
 public class KreirajKomponentu extends AbstractGenericOperation {
 
+	/**
+	 * Proverava preduslove za unos objekta klase Komponenta u bazu.
+	 * 
+	 * @throws java.lang.Exception Ako je neko polje klase Komponenta prazno (null) ili brojevni atributi negativni.
+	 */
     @Override
     protected void preconditions(Object param) throws Exception {
         Komponenta komponenta = (Komponenta) param;
@@ -35,11 +44,26 @@ public class KreirajKomponentu extends AbstractGenericOperation {
         }
     }
 
+    /**
+     * Dodavanje komponente u bazu.
+     * 
+     * @param param Komponenta koji se dodaje u bazu kao klasa Komponenta.
+     * 
+     * @throws java.lang.Exception Ako dodje do greske prilikom dodavanja komponente u bazu.
+     */
     @Override
     protected void executeOperation(Object param) throws Exception {
         repository.add((Komponenta) param);
     }
 
+    /**
+     * Proveravanje postuslova za unos objekta klase Komponenta u bazu.
+     * Ne postoje postuslov za operaciju dodavanja komponente.
+     * 
+     * @param param Komponenta koji se dodaje u bazu kao klasa Komponenta.
+     * 
+     * @throws java.lang.Exception Ako dodje do greske prilikom proveravanja postuslova dodatne komponente u bazu.
+     */
     @Override
     protected void postconditions(Object param) throws Exception {
     }

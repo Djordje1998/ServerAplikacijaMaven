@@ -37,7 +37,7 @@ public class PretragaKorisnika extends AbstractGenericOperation {
     /**
      * Pretraga korisnika u bazu.
      * 
-     * @param param Korisnik koji po cijim atributima se vrsi pretraga kao klasa Korisnik.
+     * @param param Korisnik po cijim atributima se vrsi pretraga kao klasa Korisnik.
      * 
      * @throws java.lang.Exception Ako dodje do greske prilikom pretrage korisnika u bazi.
      */
@@ -48,6 +48,7 @@ public class PretragaKorisnika extends AbstractGenericOperation {
 
     /**
      * Vraca listu korisnika kao rezultat pretrage.
+     * 
      * @return Lista korisnika.
      */
     public ArrayList<Korisnik> getKorisnici() {
@@ -57,7 +58,7 @@ public class PretragaKorisnika extends AbstractGenericOperation {
     /**
      * Proveravanje postuslova za pretragu objekta klase Korisnik u bazi.
      * 
-     * @param param Korisnik koji se dodaje u bazu kao klasa Korisnik.
+     * @param param Korisnik po cijim atributima se vrsi pretraga kao klasa Korisnik.
      * 
      * @throws java.lang.Exception Ako dodje do greske prilikom proveravanja postuslova pretrage korisnika u bazu ili se vrati prazna lista.
      */

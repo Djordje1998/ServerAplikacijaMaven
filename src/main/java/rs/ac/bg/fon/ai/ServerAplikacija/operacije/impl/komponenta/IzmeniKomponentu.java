@@ -9,11 +9,20 @@ import rs.ac.bg.fon.ai.BibliotekaAplikacija.domen.Komponenta;
 import rs.ac.bg.fon.ai.ServerAplikacija.operacije.AbstractGenericOperation;
 
 /**
+ * Klasa koja nasledjuje abstraktnu klasu AbstractGenericOperation i implementira abstratne metode.
+ * Prvo ispituje preduslove, ukoliko si ispunjeni izvrsava operaciju izmene objekta klase Komponenta u bazu.
+ * Na kraju provera postuslove operacije izmene komponente u bazi.
  *
- * @author DarkForce
+ * @author Djordje Novakovic
+ * @version 1.0
  */
 public class IzmeniKomponentu extends AbstractGenericOperation {
 
+	/**
+	 * Proverava preduslove za izmenu objekta klase Komponenta u bazu.
+	 * 
+	 * @throws java.lang.Exception Ako je neko polje komponente prazno (null) ili ako negativni brojcani atributi.
+	 */
     @Override
     protected void preconditions(Object param) throws Exception {
         Komponenta komponenta = (Komponenta) param;
@@ -37,11 +46,26 @@ public class IzmeniKomponentu extends AbstractGenericOperation {
         }
     }
 
+    /**
+     * Izmena komponente u bazi.
+     * 
+     * @param param Komponenta koja se menja u bazu kao klasa Komponenta.
+     * 
+     * @throws java.lang.Exception Ako dodje do greske prilikom izmene komponente u bazi.
+     */
     @Override
     protected void executeOperation(Object param) throws Exception {
         repository.edit((Komponenta) param);
     }
 
+    /**
+     * Proveravanje postuslova za izmenu objekta klase Komponenta u bazu.
+     * Ne postoje postuslov za operaciju izmenu komponente.
+     * 
+     * @param param Komponenta koja se menja u bazu kao klasa Komponenta.
+     * 
+     * @throws java.lang.Exception Ako dodje do greske prilikom proveravanja postuslova ismene komponente u bazi.
+     */
     @Override
     protected void postconditions(Object param) throws Exception {
     }
